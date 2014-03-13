@@ -61,7 +61,7 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.transition'])
     return {
       restrict: 'EA',
       replace: true,
-      templateUrl: 'template/modal/backdrop.html',
+      template: '<div class="modal-backdrop fade" ng-class="{in: animate}" ng-style="{\'z-index\': 1040 + index*10}"></div>',
       link: function (scope) {
 
         scope.animate = false;
@@ -83,7 +83,9 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.transition'])
       },
       replace: true,
       transclude: true,
-      templateUrl: 'template/modal/window.html',
+      template: '<div tabindex="-1" class="modal fade {{ windowClass }}" ng-class="{in: animate}" ng-style="{\'z-index\': 1050 + index*10, display: \'block\'}" ng-click="close($event)">' +
+      '<div class="modal-dialog"><div class="modal-content" ng-transclude></div></div>' +
+      '</div>',
       link: function (scope, element, attrs) {
         scope.windowClass = attrs.windowClass || '';
 
@@ -132,7 +134,7 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.transition'])
         }
       });
 
-      function removeModalWindow(modalInstance) {
+      function removetemplateUrl(modalInstance) {
 
         var body = $document.find('body').eq(0);
         var modalWindow = openedWindows.get(modalInstance).value;
