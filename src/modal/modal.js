@@ -134,7 +134,7 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.transition'])
         }
       });
 
-      function removetemplateUrl(modalInstance) {
+      function removeModalWindow(modalInstance) {
 
         var body = $document.find('body').eq(0);
         var modalWindow = openedWindows.get(modalInstance).value;
